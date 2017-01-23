@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html>
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Node/Angular Todo App</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-app="gameofdronesApp">
+    
+    <nav id="content" ui-view="content"> </nav>
+    
+    <script src="js/bower_components/angular/angular.js"></script>
+    <script src="js/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    
+    <script src="js/gameofdrones.core.js"></script>
+    <script src="js/states/gameofdrones.state.js"></script> 
+    <script src="js/controllers/startgame.controller.js"></script>
+    <script src="js/services/gameofdrones.service.js"></script>   
+    
+</body>
+    
+
+</html>
