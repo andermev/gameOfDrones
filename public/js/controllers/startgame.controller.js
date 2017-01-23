@@ -21,25 +21,15 @@ angular.module('gameofdronesApp')
                 number: 1
             };
             
-            Todos.create(playerOne);
-            
             var playerTwo = {
                 name: $scope.gameDrones.player2,
                 number: 2
             };
             
-            Todos.create(playerTwo)
-
-            // call the create function from our service (returns a promise object)
-            //Todos.create($scope.gameDrones)
-
-                // if successful creation, call our get function to get all the new todos
-                .success(function(data) {
-                    $scope.loading = false;
-                    $scope.gameDrones = {}; // clear the form so our user is ready to enter another
-                    $scope.todos = data; // assign our new list of todos
-                    $state.go("roundGame");
-                });
+            var players = [playerOne, playerTwo];
+            
+            $state.go("roundGame", {"players" : players});            
+            
         }
     };
 }]);

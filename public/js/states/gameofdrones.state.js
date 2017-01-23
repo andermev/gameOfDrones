@@ -4,7 +4,7 @@ angular.module('gameofdronesApp')
     .config(function ($stateProvider) {
         $stateProvider
             .state('startGame', {
-                url: '/',
+                url: '/',                
                 views: {
                     'content@': {
                         templateUrl: 'startgame.html',
@@ -13,6 +13,9 @@ angular.module('gameofdronesApp')
                 }
             })
             .state('roundGame', {
+                params : {
+                    players:[]
+                },
                 views: {
                     'content@': {
                         templateUrl: 'roundgame.html',

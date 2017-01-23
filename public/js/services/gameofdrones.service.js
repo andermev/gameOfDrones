@@ -27,61 +27,109 @@ angular.module('gameofdronesApp')
 			}
 		}
 	}])
-    .factory('Util', function() {
+    .factory('Utility', function() {
     
         var numberPlayer = 1;
-        var namePlayer = null;
+        var namePlayer = "";
         var limitMovements = 3;
-        var moveType = null;
+        var moveType = "";
         var numberRound = 1;
         var starting = false;
+        var victoriesFirstPlayer = 0;
+        var victoriesSecondPlayer = 0;
+        var movementFirstPlayer = {};
+        var moveFirstPlayer = 0;
+        var moveNumberFirstPlayer = 0;
+        var players = [];
 
-        var setNumberPlayer = function(numberPlayer){
-            numberPlayer = numberPlayer;
+        var setNumberPlayer = function(numbPlayer){
+            numberPlayer = numbPlayer;
         }
 
         var getNumberPlayer = function(){
             return numberPlayer;
         }
 
-        var setNamePlayer = function(namePlayer){
-            namePlayer = namePlayer;
+        var setNamePlayer = function(namePlay){
+            namePlayer = namePlay;
         }
 
         var getNamePlayer = function(){
             return namePlayer;
         }
 
-        var setLimitMovements = function(limitMovements){
-            limitMovements = limitMovements;
+        var setLimitMovements = function(limitMoves){
+            limitMovements = limitMoves;
         }
 
         var getLimitMovements = function(){
             return limitMovements;
         }
         
-        var setMoveType = function(moveType){
-            moveType = moveType;
+        var setMoveType = function(moveT){
+            moveType = moveT;
         }
 
         var getMoveType = function(){
             return moveType;
         }
 
-        var setNumberRound = function(numberRound){
-            numberRound = numberRound;
+        var setNumberRound = function(numbRound){
+            numberRound = numbRound;
         }
 
         var getNumberRound = function(){
             return numberRound;
         }
         
-        var setStarting = function(starting){
-            starting = starting;
+        var setStarting = function(start){
+            starting = start;
         }
 
         var getStarting = function(){
             return starting;
+        }
+        
+        var setCountVictoriesFirstPlayer = function(victoryFirstPlayer){
+            victoriesFirstPlayer = victoryFirstPlayer;
+        }
+        
+        var getCountVictoriesFirstPlayer = function(){
+            return victoriesFirstPlayer;
+        }
+        
+        var setCountVictoriesSecondPlayer = function(victorySecondPlayer){
+            victoriesSecondPlayer = victorySecondPlayer;
+        }
+        
+        var getCountVictoriesSecondPlayer = function(){
+            return victoriesSecondPlayer;
+        }
+        
+        var setPlayers = function(newNumberPlayer, newNamePlayer, newMove, newMoveNumber, operation){            
+            
+            var play = [];
+            
+            switch(operation){
+                case "create":
+                    var obj = {moveType : newMove, numberRound : newMoveNumber, 
+                            numberPlayer : newNumberPlayer, namePlayer : newNamePlayer, limitMovements : 3}
+                    players.push(obj);
+                    break;
+                case "update":
+                    play = players[numberPlayer - 1];
+                    play.moveType = newMove;
+                    play.numberRound = newMoveNumber;
+                    play.numberPlayer = newNumberPlayer;
+                    play.namePlayer = newNamePlayer;
+                    play.limitMovements = 3;
+                    players[numberPlayer - 1] = play;
+            }
+            
+        }
+        
+        var getPlayers = function(indexPlayer) {
+            return players[indexPlayer - 1];
         }
     
 		return {
@@ -96,6 +144,12 @@ angular.module('gameofdronesApp')
             setNumberRound : setNumberRound,
             getNumberRound : getNumberRound,
             setStarting : setStarting,
-            getStarting : getStarting
+            getStarting : getStarting,
+            setCountVictoriesFirstPlayer : setCountVictoriesFirstPlayer,
+            getCountVictoriesFirstPlayer : getCountVictoriesFirstPlayer,
+            setCountVictoriesSecondPlayer : setCountVictoriesSecondPlayer,
+            getCountVictoriesSecondPlayer : getCountVictoriesSecondPlayer,
+            setPlayers : setPlayers,
+            getPlayers : getPlayers
 		}
 	});

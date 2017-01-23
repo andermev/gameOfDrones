@@ -1,9 +1,17 @@
 <div class="container">
 
-		<div class="jumbotron text-center">
-			<h1>Round: </h1>{{round.numberRound}}
+		<div class="jumbotron text-center" ng-show="!error || !message">
+			<h2>Round </h2>{{round.numberRound}}
             <h2>Player </h2>{{round.numberPlayer}}
-            <h2> Name: </h2>{{round.namePlayer}}
+            <h2> Name </h2>{{round.namePlayer}}
+		</div>
+    
+        <div class="jumbotron text-center" ng-show="message">
+			<h1>{{message}}</h1>
+		</div>
+    
+        <div class="jumbotron text-center" ng-show="error">
+			<h1>Error: </h1>{{error}}
 		</div>
 
 		<!-- TODO LIST -->
@@ -19,19 +27,23 @@
 
 		<div id="todo-form" class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
+				<form name="roundGameForm">
                     
                     <div class="col-xs-12 col-md-6">
                         <div class="form-group label-floating">
                             <label class="control-label"><span class="text-danger">* </span> <span class="bold" for="field_providers">Select move: </span></label>
-                            <select class="form-control" id="field_selectMove" name="selectMove" ng-model="gameDrones.selectMove" 
-                                ng-change="selectedMove()"
-                                ng-options="move as move.name for move in moves track by moves.id" required>
+                            <select class="form-control" name="selectMove" id="selectMove" ng-model="gameDrones.selectMove" 
+                                    ng-change="selectMoveType(gameDrones.selectMove)" required>
+                                <option value="">---Please select---</option>
+                                <option value="paper">Paper</option>
+                                <option value="rock">Rock</option>
+                                <option value="scissors">Scissors</option>
                             </select>
                         </div>
                     </div>
 
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="playMove()">Ok</button>
+					<button type="submit" class="btn btn-primary btn-lg" ng-disabled="roundGameForm.$invalid" 
+                            ng-click="playMove()">Ok</button>
 				</form>
 			</div>
 		</div>
