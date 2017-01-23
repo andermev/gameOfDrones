@@ -1,22 +1,11 @@
 <div class="container">
 
-		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
 			<h1>Enter Player's Name</h1>
 		</div>
 
-		<!-- TODO LIST -->
-		<div id="todo-list" class="row">
+		<div class="row">
 			<div class="col-sm-4 col-sm-offset-4">
-
-				
-
-				<!-- LOOP OVER THE TODOS IN $scope.todos -->
-				<div class="checkbox" ng-repeat="todo in todos">
-					<label>
-						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-					</label>
-				</div>
 
 				<p class="text-center" ng-show="loading">
 					<span class="fa fa-spinner fa-spin fa-3x"></span>
@@ -27,21 +16,23 @@
 
 		<div id="todo-form" class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
+                
+				<form name="startGameForm">
+                    
 					<div class="form-group">
-
                         <label class="control-label" for="field_player1">Player 1</label>
 						<input type="text" class="form-control input-lg text-center" placeholder="Player 1" ng-model="gameDrones.player1" required>
 					</div>
                     
                     <div class="form-group">
-
                         <label class="control-label" for="field_player2">Player 2</label>
 						<input type="text" class="form-control input-lg text-center" placeholder="Player 2" ng-model="gameDrones.player2" required>
 					</div>
 
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createGame()">Start game</button>
+					<button type="submit" class="btn btn-primary btn-lg" ng-disabled="startGameForm.$invalid" 
+                            ng-click="createGame()">Start game</button>
 				</form>
+                
 			</div>
 		</div>
 

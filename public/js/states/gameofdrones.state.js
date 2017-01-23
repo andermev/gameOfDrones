@@ -11,5 +11,13 @@ angular.module('gameofdronesApp')
                         controller: 'startGameController',
                     }
                 }
+            })
+            .state('roundGame', {
+                views: {
+                    'content@': {
+                        templateUrl: 'roundgame.html',
+                        controller: 'roundGameController',
+                    }
+                }
             });
     });

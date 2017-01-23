@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('gameofdronesApp')
-    .controller('startGameController', ['$scope','$http','Todos', function($scope, $http, Todos) {
+    .controller('startGameController', ['$scope','$http','Todos', '$state', function($scope, $http, Todos, $state) {
+        
+    $scope.gameDrones = {};
 
     // CREATE ==================================================================
     // when submitting the add form, send the text to the node API
@@ -9,7 +11,7 @@ angular.module('gameofdronesApp')
 
         // validate the formData to make sure that something is there
         // if form is empty, nothing will happen
-        if ($scope.gameDrones && $scope.gameDrones.player1 && $scope.gameDrones.player2) {
+        if ($scope.gameDrones.player1 && $scope.gameDrones.player2) {
             $scope.loading = true;
 
             // call the create function from our service (returns a promise object)
@@ -20,6 +22,7 @@ angular.module('gameofdronesApp')
                     $scope.loading = false;
                     $scope.gameDrones = {}; // clear the form so our user is ready to enter another
                     $scope.todos = data; // assign our new list of todos
+                    $state.go("roundGame");
                 });
         }
     };

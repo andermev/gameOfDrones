@@ -1,0 +1,38 @@
+<div class="container">
+
+		<div class="jumbotron text-center">
+			<h1>Round: </h1>{{numberRound}}
+            <h2>Player </h2>{{numberPlayer}}<h2> Name: </h2>{{namePlayer}}
+		</div>
+
+		<!-- TODO LIST -->
+		<div id="todo-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+
+				<p class="text-center" ng-show="loading">
+					<span class="fa fa-spinner fa-spin fa-3x"></span>
+				</p>
+
+			</div>
+		</div>
+
+		<div id="todo-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+                    
+                    <div class="col-xs-12 col-md-6">
+                        <div class="form-group label-floating">
+                            <label class="control-label"><span class="text-danger">* </span> <span class="bold" for="field_providers">Select move: </span></label>
+                            <select class="form-control" id="field_selectMove" name="selectMove" ng-model="gameDrones.selectMove" 
+                                ng-change="selectedMove()"
+                                ng-options="move as move.name for move in moves track by moves.id" required>
+                            </select>
+                        </div>
+                    </div>
+
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="playMove()">Ok</button>
+				</form>
+			</div>
+		</div>
+
+	</div>

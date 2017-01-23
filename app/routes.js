@@ -49,6 +49,16 @@ module.exports = function (app) {
             getTodos(res);
         });
     });
+    
+    // delete a todo
+    app.delete('/api/todos', function (req, res) {
+        Todo.remove(function (err, todo) {
+            if (err)
+                res.send(err);
+
+            getTodos(res);
+        });
+    });
 
     // application -------------------------------------------------------------
     app.get('*', function (req, res) {
