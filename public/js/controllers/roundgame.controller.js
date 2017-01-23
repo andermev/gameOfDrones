@@ -26,12 +26,11 @@ angular.module('gameofdronesApp')
                             Util.setNamePlayer(player.name);
                             Util.setLimitMovements(3);
                             Util.setNumberRound(1);
+                            Util.setStarting(true);
+                            setRound(Util);
                         }
-                    });                
-                    
+                    });
                 });
-                
-                setRound();
             }else{
                 setRound(Util);
             }
